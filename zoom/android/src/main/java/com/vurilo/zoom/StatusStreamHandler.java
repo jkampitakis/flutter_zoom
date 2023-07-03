@@ -8,6 +8,7 @@ import us.zoom.sdk.MeetingError;
 import us.zoom.sdk.MeetingService;
 import us.zoom.sdk.MeetingServiceListener;
 import us.zoom.sdk.MeetingStatus;
+import us.zoom.sdk.MeetingParameter;
 
 /**
  * This class implements the handler for the Zoom meeting event in the flutter event channel

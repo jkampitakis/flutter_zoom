@@ -25,14 +25,20 @@ public class StatusStreamHandler implements EventChannel.StreamHandler {
         statusListener = new MeetingServiceListener() {
             @Override
             public void onMeetingStatusChanged(MeetingStatus meetingStatus, int errorCode, int internalErrorCode) {
-
+        
                 if(meetingStatus == MeetingStatus.MEETING_STATUS_FAILED &&
                         errorCode == MeetingError.MEETING_ERROR_CLIENT_INCOMPATIBLE) {
                     events.success(Arrays.asList("MEETING_STATUS_UNKNOWN", "Version of ZoomSDK is too low"));
                     return;
                 }
-
+        
                 events.success(getMeetingStatusMessage(meetingStatus));
+            }
+        
+            // Add this method to your anonymous class
+            @Override
+            public void onMeetingParameterNotification(MeetingParameter parameter) {
+                // Handle the notification here
             }
         };
 
